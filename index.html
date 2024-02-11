@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .Main, .Letsgooo, .NiceTry {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .gif-container {
+            margin-bottom: 20px;
+            max-width: 20%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .gif-container .tenor-gif-embed {
+            max-width: 100%;
+            margin: 0 auto; /* Center the GIF */
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .yes {
+            background-color: yellow;
+        }
+        .no {
+            background-color: red;
+        }
+        .hidden {
+            display: none;
+        }
+        .Login {
+            text-align: center;
+            margin-top: 50px; /* Increased margin-top */
+        }
+        .Login form {
+            width: 300px; /* Increased width */
+            margin: 0 auto; /* Center the form */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<section class="Main hidden">
+    <div class="gif-container">
+        <div class="tenor-gif-embed" data-postid="3092575458093618655" data-share-method="host" data-aspect-ratio="1" data-width="100%" autoplay><a href="https://tenor.com/view/hi-waving-gif-3092575458093618655">Hi Waving GIF</a>from <a href="https://tenor.com/search/hi-gifs">Hi GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+
+    <h1>Do you want to be my valentine?</h1>
+
+    <div class="button-container">
+        <button class="yes">Yes, I do</button>
+        <button class="no">No</button>
+    </div>
+</section>
+
+<section class="Login">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password (MM-DD)" required><br>
+        <button type="submit">Login</button>
+    </form>
+    <div class="gif-container">
+        <div class="tenor-gif-embed" data-postid="11566025320292037589" data-share-method="host" data-aspect-ratio="0.635838" data-width="100%"><a href="https://tenor.com/view/on-top-bubu-gif-11566025320292037589">On Top Bubu GIF</a>from <a href="https://tenor.com/search/on+top-gifs">On Top GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+</section>
+
+<section class="Letsgooo hidden">
+    <div class="gif-container">
+        <div class="tenor-gif-embed" data-postid="14700522721686624404" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/love-gif-14700522721686624404">Love GIF</a>from <a href="https://tenor.com/search/love-gifs">Love GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+    <h1>OMG AWESOME, THANK YOU SO MUCH</h1>
+</section>
+
+<section class="NiceTry hidden">
+    <div class="gif-container">
+        <div class="tenor-gif-embed" data-postid="15975560512023441664" data-share-method="host" data-aspect-ratio="1.0081" data-width="100%"><a href="https://tenor.com/view/dudu-cry-hay-nako-reika-dudu-crying-gif-15975560512023441664">Dudu Cry Hay Nako Reika GIF</a>from <a href="https://tenor.com/search/dudu+cry-gifs">Dudu Cry GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+    <h1>Okey then, it's okey. Looks like another nice try.</h1>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $(".yes").click(function () {
+            $(".Main, .Login, .NiceTry").addClass("hidden");
+            $(".Letsgooo").removeClass("hidden");
+        });
+
+        $("#loginForm").submit(function (event) {
+            event.preventDefault();
+            var username = $("input[name='username']").val();
+            var password = $("input[name='password']").val();
+            if (username === "Risti" && password === "03-27") {
+                $(".Login").addClass("hidden");
+                $(".Main").removeClass("hidden");
+            } else {
+                alert("Invalid username or password.");
+            }
+        });
+
+        $(".no").click(function () {
+            var buttonTexts = [
+                "Are you sure?",
+                "Why?",
+                "Please",
+                "Come on",
+                "Apa salahnya mencoba yakan?",
+                "One more chance?",
+                "Mau ga ngasi ak kesempatan lagi?",
+                "Kalau ga juga gpp sih",
+                "Oke deh",
+                "Ini terakhir kok",
+                "Aman",
+                "I'm Fine",
+                "Oke lah",
+                "No",
+            ];
+            var noButton = $(this);
+            var yesButton = $(".yes");
+            var currentIndex = noButton.data('currentIndex') || 0;
+            noButton.text(buttonTexts[currentIndex]);
+            noButton.data('currentIndex', (currentIndex + 1) % buttonTexts.length);
+            if (currentIndex === buttonTexts.length - 1) {
+                $(".Main, .Letsgooo").addClass("hidden");
+                $(".NiceTry").removeClass("hidden");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
